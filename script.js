@@ -23,9 +23,9 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
         valid = false;
     }
 
-    // If all inputs are valid, show success message and clear the form
+    // If all inputs are valid, send data to ESP32
     if (valid) {
-        fetch('http://192.168.4.1/submit', { // Pastikan alamat IP dan endpoint sesuai
+        fetch('http://192.168.4.1/submit', { // Gantilah dengan IP ESP32 yang sesuai
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
