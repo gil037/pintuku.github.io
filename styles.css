@@ -111,14 +111,14 @@ h1 {
 }
 
 .input-group input:focus {
-    border-color: #ff9a9e;
+    border-color: #b084f4; /* Warna ungu untuk fokus input */
     outline: none;
 }
 
 button {
     width: 100%;
     padding: 0.8rem;
-    background: #ff9a9e;
+    background: #b084f4; /* Warna ungu untuk tombol */
     border: none;
     border-radius: 5px;
     color: white;
@@ -128,12 +128,12 @@ button {
 }
 
 button:hover {
-    background: #fa709a;
+    background: #9b6ef3; /* Warna ungu yang lebih gelap untuk hover */
 }
 
 /* Error Message Styling */
 .error-message {
-    color: #ff6b6b;
+    color: #b084f4; /* Warna ungu untuk pesan error */
     font-size: 0.9rem;
     margin-top: 0.5rem;
     display: none;
