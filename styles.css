@@ -111,7 +111,7 @@ h1 {
 }
 
 .input-group input:focus {
-    border-color: #b084f4; /* Warna ungu untuk fokus input */
+    border-color: #8e44ad; /* Ganti warna border untuk input IP */
     outline: none;
 }
 

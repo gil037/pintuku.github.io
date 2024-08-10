@@ -2,12 +2,21 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     // Clear previous error messages
+    document.getElementById('ipError').style.display = 'none';
     document.getElementById('ssidError').style.display = 'none';
     document.getElementById('passwordError').style.display = 'none';
 
+    let ip = document.getElementById('ip').value.trim();
     let ssid = document.getElementById('ssid').value.trim();
     let password = document.getElementById('password').value.trim();
     let valid = true;
+
+    // Validate IP
+    if (!ip) {
+        document.getElementById('ipError').innerText = 'IP tidak boleh kosong';
+        document.getElementById('ipError').style.display = 'block';
+        valid = false;
+    }
 
     // Validate SSID
     if (!ssid) {
@@ -25,7 +34,7 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
 
     // If all inputs are valid, send data to ESP32
     if (valid) {
-        fetch('http://192.168.4.1/submit', { // Gantilah dengan IP ESP32 yang sesuai
+        fetch(`http://${ip}/submit`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -47,6 +56,7 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
         });
 
         // Clear the form inputs
+        document.getElementById('ip').value = '';
         document.getElementById('ssid').value = '';
         document.getElementById('password').value = '';
     }
