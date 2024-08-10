@@ -27,6 +27,28 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
     if (valid) {
         alert('Semua inputan terisi dengan benar!');
         
+        // Mengirim data ke ESP32 menggunakan fetch API
+        fetch('http://192.168.4.1/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'ssid=' + encodeURIComponent(ssid) + '&password=' + encodeURIComponent(password)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        })
+        .then(data => {
+            alert('Data berhasil dikirim ke ESP32: ' + data);
+        })
+        .catch(error => {
+            alert('Terjadi kesalahan: ' + error.message);
+        });
+
         // Clear the form inputs
         document.getElementById('ssid').value = '';
         document.getElementById('password').value = '';
