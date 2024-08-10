@@ -54,7 +54,7 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
         })
         .catch(error => {
             alert('Terjadi kesalahan: ' + error.message);
-        });
+        });        
 
         // Clear the form inputs
         document.getElementById('ip').value = '';
