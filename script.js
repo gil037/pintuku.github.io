@@ -12,8 +12,9 @@ document.getElementById('wifiForm').addEventListener('submit', function(event) {
     let valid = true;
 
     // Validate IP
-    if (!ip) {
-        document.getElementById('ipError').innerText = 'IP tidak boleh kosong';
+    const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    if (!ipRegex.test(ip)) {
+        document.getElementById('ipError').innerText = 'IP tidak valid';
         document.getElementById('ipError').style.display = 'block';
         valid = false;
     }
